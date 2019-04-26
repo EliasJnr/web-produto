@@ -9,7 +9,7 @@ import { Product } from '../product';
 })
 export class ProductsComponent implements OnInit {
 
-  displayedColumns: string[] = ['prod_name', 'prod_descricao'];
+  displayedColumns: string[] = ['nome', 'descricao'];
   data: Product[] = [];
   isLoadingResults = true;
 
@@ -19,7 +19,6 @@ export class ProductsComponent implements OnInit {
     this.api.getProducts()
       .subscribe(res => {
         this.data = res;
-        console.log(this.data);
         this.isLoadingResults = false;
       }, err => {
         console.log(err);

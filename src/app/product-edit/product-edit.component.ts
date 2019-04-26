@@ -11,10 +11,9 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 export class ProductEditComponent implements OnInit {
 
   productForm: FormGroup;
-  _id:string='';
-  prod_name:string='';
-  prod_desc:string='';
-  prod_price:number=null;
+  id:string='';
+  nome:string='';
+  descricao:string='';
   isLoadingResults = false;
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
@@ -22,28 +21,26 @@ export class ProductEditComponent implements OnInit {
   ngOnInit() {
     this.getProduct(this.route.snapshot.params['id']);
     this.productForm = this.formBuilder.group({
-      'prod_name' : [null, Validators.required],
-      'prod_desc' : [null, Validators.required],
-      'prod_price' : [null, Validators.required]
+      'nome' : [null, Validators.required],
+      'descricao' : [null, Validators.required]
     });
   }
 
   getProduct(id) {
     this.api.getProduct(id).subscribe(data => {
-      this._id = data._id;
+      this.id = data.id;
       this.productForm.setValue({
-        prod_name: data.prod_name,
-        prod_desc: data.prod_desc,
-        prod_price: data.prod_price
+        nome: data.nome,
+        descricao: data.descricao
       });
     });
   }
 
   onFormSubmit(form:NgForm) {
     this.isLoadingResults = true;
-    this.api.updateProduct(this._id, form)
+    this.api.updateProduct(this.id, form)
       .subscribe(res => {
-          let id = res['_id'];
+          let id = res['id'];
           this.isLoadingResults = false;
           this.router.navigate(['/product-details', id]);
         }, (err) => {
@@ -54,7 +51,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   productDetails() {
-    this.router.navigate(['/product-details', this._id]);
+    this.router.navigate(['/product-details', this.id]);
   }
 
 }

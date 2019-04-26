@@ -10,7 +10,7 @@ import { Product } from '../product';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product = { _id: '', prod_name: '', prod_desc: '', prod_price: null, updated_at: null };
+  product: Product = { id: '', nome: '', descricao: '', updated_at: null };
   isLoadingResults = true;
 
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }

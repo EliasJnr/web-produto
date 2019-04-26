@@ -27,14 +27,14 @@ export class ApiService {
   getProduct(id: number): Observable<Product> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Product>(url).pipe(
-      tap(_ => console.log(`fetched product id=${id}`)),
+      tap(_ => console.log(`get produto id=${id}`)),
       catchError(this.handleError<Product>(`getProduct id=${id}`))
     );
   }
 
   addProduct (product): Observable<Product> {
     return this.http.post<Product>(apiUrl, product, httpOptions).pipe(
-      tap((product: Product) => console.log(`added product w/ id=${product._id}`)),
+      tap((product: Product) => console.log(`cadastrar produto w/ id=${product.id}`)),
       catchError(this.handleError<Product>('addProduct'))
     );
   }
@@ -42,7 +42,7 @@ export class ApiService {
   updateProduct (id, product): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, product, httpOptions).pipe(
-      tap(_ => console.log(`updated product id=${id}`)),
+      tap(_ => console.log(`atualizar produto id=${id}`)),
       catchError(this.handleError<any>('updateProduct'))
     );
   }
