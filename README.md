@@ -1,6 +1,8 @@
-# ProductFront
+# Angular 7 Tutorial: Building CRUD Web Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This source code is part of [Angular 7 Tutorial: Building CRUD Web Application](https://www.djamware.com/post/5bca67d780aca7466989441f/angular-7-tutorial-building-crud-web-application) tutorial.
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.1.
 
 ## Development server
 
@@ -12,7 +14,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
